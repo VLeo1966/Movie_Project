@@ -1,0 +1,23 @@
+<!-- films/templates/films/film_list.html -->
+{% extends 'films/base.html' %}
+
+{% block title %}
+    Список фильмов - Movie Project
+{% endblock %}
+
+{% block content %}
+<h1>Список фильмов</h1>
+<a href="{% url 'add_film' %}" class="btn btn-success mb-3">Добавить новый фильм</a>
+<ul class="list-group">
+    {% for film in films %}
+        <li class="list-group-item">
+            <h3>{{ film.title }}</h3>
+            <p><strong>Описание:</strong> {{ film.description }}</p>
+            <p><strong>Отзыв:</strong> {{ film.review }}</p>
+        </li>
+    {% empty %}
+        <li class="list-group-item">Фильмов пока нет.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+

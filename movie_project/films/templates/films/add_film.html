@@ -1,0 +1,35 @@
+<!-- films/templates/films/add_film.html -->
+{% extends 'films/base.html' %}
+
+{% block title %}
+    Добавить фильм - Movie Project
+{% endblock %}
+
+{% block content %}
+<h1>Добавить фильм</h1>
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.title.label_tag }}
+        {{ form.title }}
+        {% if form.title.errors %}
+            <div class="text-danger">{{ form.title.errors }}</div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        {{ form.description.label_tag }}
+        {{ form.description }}
+        {% if form.description.errors %}
+            <div class="text-danger">{{ form.description.errors }}</div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        {{ form.review.label_tag }}
+        {{ form.review }}
+        {% if form.review.errors %}
+            <div class="text-danger">{{ form.review.errors }}</div>
+        {% endif %}
+    </div>
+    <button type="submit" class="btn btn-primary">Добавить</button>
+</form>
+{% endblock %}
